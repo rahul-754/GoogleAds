@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from 'react-icons/fa'; // Importing React Icons
 
-const Sidebar = ({ toggleSidebar, isSidebarVisible }) => {
+const Sidebar = ({ toggleSidebar, isSidebarVisible, setIsLoggedIn }) => {
   const navigate = useNavigate(); // Initialize useNavigate hook
   const [activeLink, setActiveLink] = useState("");
 
@@ -11,11 +11,18 @@ const Sidebar = ({ toggleSidebar, isSidebarVisible }) => {
   };
 
   const handleLogout = () => {
-    // Handle logout logic here (e.g., clear user data)
-    localStorage.setItem("isLoggedIn", "False");
+    // Update localStorage on logout
+    localStorage.removeItem("isLoggedIn");
+    //setIsLoggedIn(false); // Update state in parent component
     console.log("Logout clicked");
-    navigate("/login"); // Redirect to login page
+  
+    // Reload the page after logout
+    window.location.reload(); // Refresh the page
+    
+    // Redirect to login page
+    navigate("/login");
   };
+  
 
   return (
     <div
