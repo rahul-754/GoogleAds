@@ -13,14 +13,14 @@ const Sidebar = ({ toggleSidebar, isSidebarVisible, setIsLoggedIn }) => {
   const handleLogout = () => {
     // Update localStorage on logout
     localStorage.removeItem("isLoggedIn");
-    //setIsLoggedIn(false); // Update state in parent component
+    setIsLoggedIn(false); // Update state in parent component
     console.log("Logout clicked");
-  navigate("/login");
+
     // Reload the page after logout
-  //  window.location.reload(); // Refresh the page
+    window.location.reload(); // Refresh the page
     
     // Redirect to login page
-   // navigate("/login");
+   navigate("/login");
   };
   
 
